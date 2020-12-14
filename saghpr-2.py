@@ -34,7 +34,7 @@ class Herramienta:
         print('Numero de herramientasa usar:',self.GetNumeroHerramientas(),'\n')
         print('══════════════════════════════════════════════════════════════════\n')
 
-class CajaHerramientas:
+class CajaHerramientas(Herramienta):
     def __init__(self,path):
         self.__ListaHerramientas =[]
         self.__Path = path
@@ -93,8 +93,18 @@ class CajaHerramientas:
             print('NUMERO DE HERRAMIENTAS EN LA CAJA:',len(self.__ListaHerramientas),'herramientas')
         for herramienta in self.__ListaHerramientas:
             herramienta.MostartHerramienta()
-    #══════════════════FALTAN LOS METODOS PARA BUSCAR HERRAMIENTA Y PARA ELIMINAR HERRAMIENTAS DE LA CAJA.
-    #══════════════════FALTAN LA CLASE ALMACEN DE PARTES DE REPUESTOS Y SUS METODOS.
+    def BuscarHerramientaPorNombre(self,nombreherramienta):
+        listaencontrados = []
+        for herramienta in self.__ListaHerramientas:
+            if herramienta.GetNombreHerramienta() == nombreherramienta:
+                listaencontrados = listaencontrados + [herramienta]
+    def BorrarHerramientaPorNombre(self, nombreherramienta):
+        listafinal = []
+        for herramienta in self.__ListaHerramientas:
+            if herramienta.GetNombreHerramienta() != nombreherramienta:
+                listafinal = listafinal + [herramienta]
+                print('INFO: ',len(self.__ListaHerramientas)-len(listafinal),'herramienta retirada de la caja.')
+                #══════════════════FALTAN LA CLASE ALMACEN DE PARTES DE REPUESTOS Y SUS METODOS.
 
 class PartesDeRepuesto:
     def __init__(self):
